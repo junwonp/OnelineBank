@@ -2,6 +2,8 @@ import { ExpoConfig } from 'expo/config';
 import { withXcodeProject } from 'expo/config-plugins';
 import 'tsx/cjs';
 
+const IS_DEV = process.env.APP_VARIANT === 'development';
+
 const expoConfig: ExpoConfig = {
   name: 'OnelineBank',
   slug: 'OnelineBank',
@@ -16,22 +18,24 @@ const expoConfig: ExpoConfig = {
   locales: {
     en: {
       ios: {
-        CFBundleDisplayName: 'OnelineBank',
+        CFBundleDisplayName: IS_DEV ? 'OnelineBank Dev' : 'OnelineBank',
       },
       android: {
-        app_name: 'OnelineBank',
+        app_name: IS_DEV ? 'OnelineBank Dev' : 'OnelineBank',
       },
     },
     ko: {
       ios: {
-        CFBundleDisplayName: '한줄은행',
+        CFBundleDisplayName: IS_DEV ? '한줄은행 Dev' : '한줄은행',
       },
       android: {
-        app_name: '한줄은행',
+        app_name: IS_DEV ? '한줄은행 Dev' : '한줄은행',
       },
     },
   },
   ios: {
+    bundleIdentifier: IS_DEV ? 'com.junwon.onelinebank.dev' : 'com.junwon.onelinebank',
+    icon: 'assets/app.icon',
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
       UIViewControllerBasedStatusBarAppearance: false,
@@ -46,6 +50,7 @@ const expoConfig: ExpoConfig = {
       monochromeImage: './assets/images/android-icon-monochrome.png',
     },
     edgeToEdgeEnabled: true,
+    package: IS_DEV ? 'com.junwon.onelinebank.dev' : 'com.junwon.onelinebank',
     predictiveBackGestureEnabled: false,
   },
   web: {
@@ -54,16 +59,22 @@ const expoConfig: ExpoConfig = {
     favicon: './assets/images/favicon.png',
   },
   plugins: [
+    [
+      'expo-dev-client',
+      {
+        addGeneratedScheme: !!IS_DEV,
+      },
+    ],
     'expo-router',
     [
       'expo-splash-screen',
       {
-        image: './assets/images/splash-icon.png',
+        image: './assets/images/android-icon-foreground.png',
         imageWidth: 200,
         resizeMode: 'contain',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#53BDEB',
         dark: {
-          backgroundColor: '#000000',
+          backgroundColor: '#1277CB',
         },
       },
     ],
