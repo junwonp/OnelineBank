@@ -1,13 +1,29 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen';
+import React, { useEffect } from 'react';
 
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
+import { useAuthListener } from '@/features/auth/hooks/useAuthListener';
+import { useAuthStore } from '@/features/auth/store/useAuthStore';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
+preventAutoHideAsync();
+
 export default function TabLayout() {
+  useAuthListener();
   const colorScheme = useColorScheme();
+
+  const isLoading = useAuthStore((state) => state.isLoading);
+
+  useEffect(() => {
+    if (!isLoading) {
+      hideAsync();
+    }
+  }, [isLoading]);
+
+  if (isLoading) return null;
 
   return (
     <Tabs
