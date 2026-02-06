@@ -18,23 +18,23 @@ const expoConfig: ExpoConfig = {
   locales: {
     en: {
       ios: {
-        CFBundleDisplayName: IS_DEV ? 'OnelineBank Dev' : 'OnelineBank',
+        CFBundleDisplayName: 'OnelineBank',
       },
       android: {
-        app_name: IS_DEV ? 'OnelineBank Dev' : 'OnelineBank',
+        app_name: 'OnelineBank',
       },
     },
     ko: {
       ios: {
-        CFBundleDisplayName: IS_DEV ? '한줄은행 Dev' : '한줄은행',
+        CFBundleDisplayName: '한줄은행',
       },
       android: {
-        app_name: IS_DEV ? '한줄은행 Dev' : '한줄은행',
+        app_name: '한줄은행',
       },
     },
   },
   ios: {
-    bundleIdentifier: IS_DEV ? 'com.junwon.onelinebank.dev' : 'com.junwon.onelinebank',
+    bundleIdentifier: 'com.junwon.onelinebank',
     icon: 'assets/app.icon',
     googleServicesFile: process.env.GOOGLE_SERVICES_PLIST,
     infoPlist: {
@@ -52,7 +52,7 @@ const expoConfig: ExpoConfig = {
     },
     edgeToEdgeEnabled: true,
     googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
-    package: IS_DEV ? 'com.junwon.onelinebank.dev' : 'com.junwon.onelinebank',
+    package: 'com.junwon.onelinebank',
     predictiveBackGestureEnabled: false,
   },
   web: {
