@@ -1,6 +1,6 @@
+import React, { useEffect } from 'react';
 import { Tabs } from 'expo-router';
 import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen';
-import React, { useEffect } from 'react';
 
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';

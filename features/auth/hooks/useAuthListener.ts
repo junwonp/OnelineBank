@@ -1,7 +1,8 @@
-import { useAuthStore } from '@/features/auth/store/useAuthStore';
-import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
-import { useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
+import { useRouter, useSegments } from 'expo-router';
+import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
+
+import { useAuthStore } from '@/features/auth/store/useAuthStore';
 
 export function useAuthListener() {
   const { setUser, setLoading, user, isLoading } = useAuthStore();
