@@ -12,8 +12,19 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "env.d.ts",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules/",
+    ".expo/",
+    "build/",
+    "ios/",
+    "android/",
+    "web/",
+    "dist/",
+    "*.config.js"
   ]
 }
