@@ -36,6 +36,7 @@ const expoConfig: ExpoConfig = {
   ios: {
     bundleIdentifier: IS_DEV ? 'com.junwon.onelinebank.dev' : 'com.junwon.onelinebank',
     icon: 'assets/app.icon',
+    googleServicesFile: process.env.GOOGLE_SERVICES_PLIST,
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
       UIViewControllerBasedStatusBarAppearance: false,
@@ -50,6 +51,7 @@ const expoConfig: ExpoConfig = {
       monochromeImage: './assets/images/android-icon-monochrome.png',
     },
     edgeToEdgeEnabled: true,
+    googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
     package: IS_DEV ? 'com.junwon.onelinebank.dev' : 'com.junwon.onelinebank',
     predictiveBackGestureEnabled: false,
   },
@@ -59,6 +61,23 @@ const expoConfig: ExpoConfig = {
     favicon: './assets/images/favicon.png',
   },
   plugins: [
+    '@react-native-firebase/app',
+    '@react-native-firebase/auth',
+    '@react-native-firebase/crashlytics',
+    [
+      'expo-build-properties',
+      {
+        android: {
+          enableMinifyInReleaseBuilds: true,
+          enableShrinkResourcesInReleaseBuilds: true,
+        },
+        ios: {
+          ccacheEnabled: true,
+          forceStaticLinking: ['RNFBApp', 'RNFBAuth'],
+          useFrameworks: 'static',
+        },
+      },
+    ],
     [
       'expo-dev-client',
       {
