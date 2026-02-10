@@ -1,5 +1,149 @@
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css";
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css';
 
-@import "nativewind/theme";
+@import 'nativewind/theme';
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-errorText: var(--text-error);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: 'Pretendard-Regular';
+}
+
+@layer base {
+  :root {
+    --gray-0: #000000;
+    --gray-5: #101011;
+    --gray-9: #17181a;
+    --gray-10: #1d1d21;
+    --gray-15: #27282f;
+    --gray-20: #40404b;
+    --gray-30: #5b5d69;
+    --gray-40: #6e717e;
+    --gray-50: #8a8b9a;
+    --gray-60: #aaabba;
+    --gray-70: #d1d2d7;
+    --gray-80: #dddee1;
+    --gray-85: #e8e9ec;
+    --gray-90: #f1f1f1;
+    --gray-95: #f6f6f6;
+    --gray-99: #fcfcfc;
+    --gray-100: #ffffff;
+
+    --background: #f8f8fa;
+    --foreground: #000000dd;
+
+    --primary: var(--gray-15);
+    --primary-foreground: var(--gray-90);
+
+    --secondary: var(--gray-80);
+    --secondary-foreground: var(--gray-60);
+
+    --accent: #2dd236;
+    --accent-foreground: var(--gray-90);
+
+    --destructive: #d32f2f;
+    --destructive-foreground: #ffffff;
+
+    --card: #ffffff;
+    --card-foreground: #212121de;
+
+    --border: #0000002a;
+    --input: #0000002a;
+    --ring: var(--gray-15);
+
+    --text-secondary: #00000099;
+    --text-disabled: #00000061;
+    --text-placeholder: #999999;
+    --text-bold: var(--gray-0);
+
+    --text-error: var(--destructive);
+  }
+
+  .dark {
+    --background: #121212;
+    --foreground: #ffffff;
+
+    --primary: #f1f1f1;
+    --primary-foreground: #27282f;
+
+    --secondary: #40404b;
+    --secondary-foreground: #8a8b9a;
+
+    --accent: #2ff23f;
+    --accent-foreground: #27282f;
+
+    --destructive: #f44336;
+    --destructive-foreground: #ffffff;
+
+    --card: #1e1e1e;
+    --card-foreground: #ffffffde;
+
+    --border: #ffffff4a;
+    --input: #ffffff4a;
+    --ring: #f1f1f1;
+
+    --text-secondary: #ffffffb2;
+    --text-disabled: #ffffff99;
+    --text-placeholder: #c2c3c4;
+    --text-bold: #f0f0f0;
+
+    --text-error: var(--destructive);
+  }
+}
+
+@layer utilities {
+  .font-thin {
+    font-family: 'Pretendard-Thin';
+    font-weight: 400;
+  }
+  .font-light {
+    font-family: 'Pretendard-Light';
+    font-weight: 400;
+  }
+  .font-regular {
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+  }
+  .font-medium {
+    font-family: 'Pretendard-Medium';
+    font-weight: 400;
+  }
+  .font-semibold {
+    font-family: 'Pretendard-SemiBold';
+    font-weight: 400;
+  }
+  .font-bold {
+    font-family: 'Pretendard-Bold';
+    font-weight: 400;
+  }
+  .font-extrabold {
+    font-family: 'Pretendard-ExtraBold';
+    font-weight: 400;
+  }
+  .font-black {
+    font-family: 'Pretendard-Black';
+    font-weight: 400;
+  }
+}

@@ -84,6 +84,57 @@ const expoConfig: ExpoConfig = {
         addGeneratedScheme: !!IS_DEV,
       },
     ],
+    [
+      'expo-font',
+      {
+        fonts: ['assets/fonts'],
+        android: {
+          fonts: [
+            {
+              fontFamily: 'Pretendard',
+              fontDefinitions: [
+                {
+                  path: 'assets/fonts/Pretendard-Thin.otf',
+                  weight: 100,
+                },
+                {
+                  path: 'assets/fonts/Pretendard-ExtraLight.otf',
+                  weight: 200,
+                },
+                {
+                  path: 'assets/fonts/Pretendard-Light.otf',
+                  weight: 300,
+                },
+                {
+                  path: 'assets/fonts/Pretendard-Regular.otf',
+                  weight: 400,
+                },
+                {
+                  path: 'assets/fonts/Pretendard-Medium.otf',
+                  weight: 500,
+                },
+                {
+                  path: 'assets/fonts/Pretendard-SemiBold.otf',
+                  weight: 600,
+                },
+                {
+                  path: 'assets/fonts/Pretendard-Bold.otf',
+                  weight: 700,
+                },
+                {
+                  path: 'assets/fonts/Pretendard-ExtraBold.otf',
+                  weight: 800,
+                },
+                {
+                  path: 'assets/fonts/Pretendard-Black.otf',
+                  weight: 900,
+                },
+              ],
+            },
+          ],
+        },
+      },
+    ],
     'expo-router',
     [
       'expo-splash-screen',
