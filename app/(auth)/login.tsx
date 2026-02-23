@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 
 import Button from '@/components/ui/button';
-import Input from '@/components/ui/Input';
+import Input from '@/components/ui/input';
 import Text from '@/components/ui/text';
 import { signInWithEmail } from '@/features/auth/api/auth';
 import { useAuthStore } from '@/features/auth/store/useAuthStore';
