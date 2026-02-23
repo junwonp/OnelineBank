@@ -1,13 +1,10 @@
 import { useEffect } from 'react';
-import { useRouter, useSegments } from 'expo-router';
 import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
 
 import { useAuthStore } from '@/features/auth/store/useAuthStore';
 
 export function useAuthListener() {
-  const { setUser, setLoading, user, isLoading } = useAuthStore();
-  const segments = useSegments();
-  const router = useRouter();
+  const { setUser, setLoading } = useAuthStore();
 
   const auth = getAuth();
 
@@ -19,16 +16,4 @@ export function useAuthListener() {
 
     return () => unsubscribe();
   }, [auth, setLoading, setUser]);
-
-  useEffect(() => {
-    if (isLoading) return;
-
-    const inAuthGroup = segments[0] === '(auth)';
-
-    if (!user && !inAuthGroup) {
-      router.replace('/(auth)/login');
-    } else if (user && inAuthGroup) {
-      router.replace('/(tabs)');
-    }
-  }, [user, isLoading, segments, router]);
 }
