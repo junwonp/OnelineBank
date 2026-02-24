@@ -6,6 +6,7 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import 'react-native-reanimated';
 import '../global.css';
 
+import { useAuthListener } from '@/features/auth/hooks/useAuthListener';
 import { useAuthStore } from '@/features/auth/store/useAuthStore';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
@@ -16,6 +17,8 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
+  useAuthListener();
+
   const isLoading = useAuthStore((state) => state.isLoading);
   const isLoggedIn = useAuthStore((state) => !!state.user);
   const colorScheme = useColorScheme();
