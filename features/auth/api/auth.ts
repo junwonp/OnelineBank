@@ -71,3 +71,8 @@ export const signInWithEmail = async (email: string, password: string): Promise<
     return { success: false, error: errorMessage };
   }
 };
+
+export const signOut = async (): Promise<void> => {
+  const auth = getAuth();
+  await auth.signOut();
+};
