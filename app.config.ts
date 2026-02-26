@@ -14,7 +14,6 @@ const expoConfig: ExpoConfig = {
   scheme: 'onelinebank',
   userInterfaceStyle: 'automatic',
   buildCacheProvider: 'eas',
-  newArchEnabled: true,
   locales: {
     en: {
       ios: {
@@ -50,7 +49,6 @@ const expoConfig: ExpoConfig = {
       backgroundImage: './assets/images/android-icon-background.png',
       monochromeImage: './assets/images/android-icon-monochrome.png',
     },
-    edgeToEdgeEnabled: true,
     googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
     package: 'com.junwon.onelinebank',
     predictiveBackGestureEnabled: false,
@@ -135,6 +133,7 @@ const expoConfig: ExpoConfig = {
         },
       },
     ],
+    'expo-image',
     [
       'expo-image-picker',
       {
@@ -156,6 +155,7 @@ const expoConfig: ExpoConfig = {
         },
       },
     ],
+    'expo-web-browser',
   ],
   experiments: {
     typedRoutes: true,
