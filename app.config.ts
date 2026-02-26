@@ -135,6 +135,14 @@ const expoConfig: ExpoConfig = {
         },
       },
     ],
+    [
+      'expo-image-picker',
+      {
+        cameraPermission: false,
+        microphonePermission: false,
+        photosPermission: false,
+      },
+    ],
     'expo-router',
     [
       'expo-splash-screen',
