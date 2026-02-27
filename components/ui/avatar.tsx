@@ -1,4 +1,4 @@
-import { ColorValue, StyleProp, TextStyle, View, ViewStyle } from 'react-native';
+import { ColorValue, StyleProp, View, ViewStyle } from 'react-native';
 import { Image, ImageProps } from 'expo-image';
 
 import { IconSymbol, IconSymbolName } from '@/components/ui/icon-symbol';
