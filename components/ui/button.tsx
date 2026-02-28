@@ -10,7 +10,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import Text from '@/components/ui/text';
 import { cn } from '@/utils/style';
 
-const buttonVariants = cva('flex-row items-center justify-center rounded-md', {
+const buttonVariants = cva('flex-row items-center justify-center rounded-lg', {
   variants: {
     variant: {
       default: 'bg-primary',
@@ -21,9 +21,9 @@ const buttonVariants = cva('flex-row items-center justify-center rounded-md', {
       link: 'text-primary underline-offset-4',
     },
     size: {
-      default: 'h-10 px-4 py-2',
-      sm: 'h-9 rounded-md px-3',
-      lg: 'h-11 rounded-md px-8',
+      default: 'h-12 px-4 py-2',
+      sm: 'h-10 rounded-md px-3',
+      lg: 'h-15 rounded-md px-8',
       icon: 'h-10 w-10',
     },
   },
@@ -33,7 +33,7 @@ const buttonVariants = cva('flex-row items-center justify-center rounded-md', {
   },
 });
 
-const buttonTextVariants = cva('text-sm font-medium text-white', {
+const buttonTextVariants = cva('text-md font-medium text-white', {
   variants: {
     variant: {
       default: 'text-primary-foreground text-white',
@@ -44,9 +44,9 @@ const buttonTextVariants = cva('text-sm font-medium text-white', {
       link: 'text-primary underline text-white',
     },
     size: {
-      default: '',
-      sm: '',
-      lg: 'text-base',
+      default: 'text-md',
+      sm: 'text-sm',
+      lg: 'text-lg font-semibold',
       icon: '',
     },
   },
