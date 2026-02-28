@@ -1,82 +1,122 @@
-import React, { forwardRef, useState } from 'react';
-import { TextInput, View } from 'react-native';
+import React, { Ref, useEffect, useState } from 'react';
+import { StyleProp, TextInput, TextInputProps, View, ViewStyle } from 'react-native';
+import Animated, {
+  interpolateColor,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import { useUnstableNativeVariable } from 'nativewind';
 
 import Text from '@/components/ui/text';
+import { cn } from '@/utils/style';
 
-interface InputProps {
-  label: string;
-  value: string;
-  onChangeText?: (text: string) => void;
-  onSubmitEditing?: () => void;
-  onBlur?: () => void;
-  placeholder?: string;
+interface InputProps extends TextInputProps {
+  label?: string;
+  isNecessary?: boolean;
   isPassword?: boolean;
-  returnKeyType?: 'done' | 'next';
-  maxLength?: number;
   disabled?: boolean;
-  keyType?: 'default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad';
+  limit?: number;
+  containerStyle?: StyleProp<ViewStyle>;
+  ref?: Ref<TextInput>;
 }
 
-const Input = forwardRef<TextInput, InputProps>(
-  (
-    {
-      label,
-      value,
-      onChangeText,
-      onSubmitEditing,
-      onBlur = () => {},
-      placeholder,
-      isPassword,
-      returnKeyType,
-      maxLength,
-      disabled,
-      keyType,
-    },
-    ref,
-  ) => {
-    const [isFocused, setIsFocused] = useState(false);
+const Input = ({
+  label,
+  isNecessary,
+  onBlur,
+  onFocus,
+  placeholder,
+  isPassword,
+  disabled,
+  limit,
+  containerStyle,
+  value,
+  ref,
+  ...rest
+}: InputProps) => {
+  const placeholderColor = useUnstableNativeVariable('--text-placeholder');
+  const cursorColor = useUnstableNativeVariable('--foreground');
+  const surfaceContainerColor = useUnstableNativeVariable('--background-surface-container');
+  const primaryContainerColor = useUnstableNativeVariable('--primary-container');
 
-    return (
-      <View className="my-2.5 w-full flex-col">
-        <Text
-          className={`mb-1.5 text-sm font-semibold ${isFocused ? 'text-neutral-900' : 'text-neutral-500'}`}
-        >
-          {label}
-        </Text>
+  const [isFocused, setIsFocused] = useState(false);
+
+  const animatedIsFocused = useSharedValue(0);
+
+  useEffect(() => {
+    animatedIsFocused.value = withTiming(isFocused ? 1 : 0, { duration: 200 });
+  }, [animatedIsFocused, isFocused]);
+
+  const animatedContainerStyle = useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(
+      animatedIsFocused.value,
+      [0, 1],
+      [surfaceContainerColor ?? 'transparent', primaryContainerColor ?? 'transparent'],
+    ),
+  }));
+
+  const charCount = value?.length ?? 0;
+  const isOverLimit = limit !== undefined && charCount > limit;
+
+  return (
+    <View className="w-full gap-1" style={containerStyle}>
+      {label || limit !== undefined ? (
+        <View className="w-full flex-row items-center justify-between">
+          {label ? (
+            <Text
+              className={cn(
+                'flex-1 text-sm font-semibold',
+                isFocused ? 'text-foreground' : 'text-[--text-secondary]',
+              )}
+            >
+              {label + (isNecessary ? ' *' : '')}
+            </Text>
+          ) : (
+            <View className="flex-1" />
+          )}
+          {limit !== undefined && (
+            <Text
+              className={cn(
+                'text-right text-sm',
+                isOverLimit ? 'text-destructive' : 'text-[--text-secondary]',
+              )}
+            >
+              {`${charCount} / ${limit}`}
+            </Text>
+          )}
+        </View>
+      ) : null}
+      <Animated.View className="flex-row rounded-xl" style={animatedContainerStyle}>
         <TextInput
           ref={ref}
-          className={`font-regular rounded border px-2.5 py-5 text-base ${
-            disabled
-              ? 'border-neutral-200 bg-neutral-100 text-neutral-400'
-              : isFocused
-                ? 'border-neutral-900 bg-white text-neutral-900'
-                : 'border-neutral-300 bg-white text-neutral-900'
-          }`}
-          value={value}
-          onChangeText={onChangeText}
-          onSubmitEditing={onSubmitEditing}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => {
+          className={cn(
+            'font-regular text-foreground min-h-12 flex-1 rounded-xl px-4 py-3 text-base',
+            disabled && 'opacity-50',
+          )}
+          cursorColor={cursorColor}
+          onFocus={(e) => {
+            setIsFocused(true);
+            onFocus?.(e);
+          }}
+          onBlur={(e) => {
             setIsFocused(false);
-            onBlur();
+            onBlur?.(e);
           }}
           placeholder={placeholder}
-          placeholderTextColor="#a3a3a3"
+          placeholderTextColor={placeholderColor}
           secureTextEntry={isPassword}
-          returnKeyType={returnKeyType}
-          maxLength={maxLength}
           autoCapitalize="none"
           autoCorrect={false}
           textContentType="none"
           underlineColorAndroid="transparent"
           editable={!disabled}
-          keyboardType={keyType}
+          value={value}
+          {...rest}
         />
-      </View>
-    );
-  },
-);
-
-Input.displayName = 'Input';
+      </Animated.View>
+    </View>
+  );
+};
 
 export default Input;
