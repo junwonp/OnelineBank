@@ -91,7 +91,7 @@ const Input = ({
         <TextInput
           ref={ref}
           className={cn(
-            'font-regular text-foreground min-h-12 flex-1 rounded-xl px-4 py-3 text-base',
+            'font-regular text-foreground min-h-12 flex-1 rounded-xl px-4 text-base leading-tight',
             disabled && 'opacity-50',
           )}
           cursorColor={cursorColor}
