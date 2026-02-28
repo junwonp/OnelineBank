@@ -21,6 +21,11 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-errorText: var(--text-error);
 
+  --color-tooltip: var(--tooltip);
+  --color-on-tooltip: var(--on-tooltip);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
@@ -79,6 +84,11 @@
     --text-bold: var(--gray-0);
 
     --text-error: var(--destructive);
+
+    --tooltip: var(--gray-15);
+    --on-tooltip: var(--gray-90);
+    --warning: #f59e0b;
+    --success: #22c55e;
   }
 
   .dark {
@@ -110,6 +120,11 @@
     --text-bold: #f0f0f0;
 
     --text-error: var(--destructive);
+
+    --tooltip: var(--gray-20);
+    --on-tooltip: var(--gray-90);
+    --warning: #fbbf24;
+    --success: #4ade80;
   }
 }
 
