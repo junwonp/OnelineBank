@@ -10,6 +10,7 @@ import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client
 import 'react-native-reanimated';
 import '../global.css';
 
+import { SnackbarProvider } from '@/components/providers/snackbar-provider';
 import { useAuthListener } from '@/features/auth/hooks/useAuthListener';
 import { useAuthStore } from '@/features/auth/store/useAuthStore';
 import useAppState from '@/hooks/use-app-state';
@@ -53,17 +54,19 @@ export default function RootLayout() {
             persister: clientPersister,
           }}
         >
-          <Stack>
-            <Stack.Protected guard={isLoggedIn}>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-            </Stack.Protected>
-            <Stack.Protected guard={!isLoggedIn}>
-              <Stack.Screen name="(auth)/login" options={{ headerShown: false }} />
-              <Stack.Screen name="(auth)/sign-up" options={{ headerShown: false }} />
-            </Stack.Protected>
-          </Stack>
-          <StatusBar style="auto" />
+          <SnackbarProvider>
+            <Stack>
+              <Stack.Protected guard={isLoggedIn}>
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+              </Stack.Protected>
+              <Stack.Protected guard={!isLoggedIn}>
+                <Stack.Screen name="(auth)/login" options={{ headerShown: false }} />
+                <Stack.Screen name="(auth)/sign-up" />
+              </Stack.Protected>
+            </Stack>
+            <StatusBar style="auto" />
+          </SnackbarProvider>
         </PersistQueryClientProvider>
       </ThemeProvider>
     </KeyboardProvider>
