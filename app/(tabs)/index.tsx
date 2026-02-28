@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import { Link } from 'expo-router';
