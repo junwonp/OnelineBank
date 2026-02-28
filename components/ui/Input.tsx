@@ -6,10 +6,14 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useUnstableNativeVariable } from 'nativewind';
+import { useUnstableNativeVariable as _useUnstableNativeVariable } from 'nativewind';
 
 import Text from '@/components/ui/text';
 import { cn } from '@/utils/style';
+
+const useUnstableNativeVariable = _useUnstableNativeVariable as (
+  name: string,
+) => string | undefined;
 
 interface InputProps extends TextInputProps {
   label?: string;
