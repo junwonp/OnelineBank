@@ -26,6 +26,19 @@
   --color-warning: var(--warning);
   --color-success: var(--success);
 
+  --color-primary-container: var(--primary-container);
+  --color-primary-on-container: var(--primary-on-container);
+  --color-background-backdrop: var(--background-backdrop);
+  --color-background-on-backdrop: var(--background-on-backdrop);
+  --color-background-splash: var(--background-splash);
+  --color-background-surface: var(--background-surface);
+  --color-background-on-surface: var(--background-on-surface);
+  --color-background-surface-container: var(--background-surface-container);
+  --color-background-surface-disabled: var(--background-surface-disabled);
+  --color-background-skeleton-bone: var(--background-skeleton-bone);
+  --color-alert: var(--alert);
+  --color-divider: var(--divider);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
@@ -85,10 +98,26 @@
 
     --text-error: var(--destructive);
 
-    --tooltip: var(--gray-15);
-    --on-tooltip: var(--gray-90);
-    --warning: #f59e0b;
-    --success: #22c55e;
+    --tooltip: #505967;
+    --on-tooltip: #ffffff;
+
+    --primary-container: var(--gray-80);
+    --primary-on-container: var(--gray-60);
+
+    --background-backdrop: #00000080;
+    --background-on-backdrop: #ffffff;
+    --background-splash: #ffffff;
+    --background-surface: #ffffff;
+    --background-on-surface: #212121de;
+    --background-surface-container: #f2f4f6;
+    --background-surface-disabled: #0000001f;
+    --background-skeleton-bone: #e0e0e0;
+
+    --alert: #f04452;
+    --divider: #0000002a;
+
+    --warning: #ff9800;
+    --success: #4caf50;
   }
 
   .dark {
@@ -121,10 +150,26 @@
 
     --text-error: var(--destructive);
 
-    --tooltip: var(--gray-20);
-    --on-tooltip: var(--gray-90);
-    --warning: #fbbf24;
-    --success: #4ade80;
+    --tooltip: #505967;
+    --on-tooltip: #ffffff;
+
+    --primary-container: var(--gray-20);
+    --primary-on-container: var(--gray-50);
+
+    --background-backdrop: #00000080;
+    --background-on-backdrop: #ffffff;
+    --background-splash: var(--gray-0);
+    --background-surface: #1e1e1e;
+    --background-on-surface: #ffffffde;
+    --background-surface-container: #2d2d2d;
+    --background-surface-disabled: #ffffff1f;
+    --background-skeleton-bone: #303030;
+
+    --alert: #f04452;
+    --divider: #ffffff4a;
+
+    --warning: #ffa726;
+    --success: #66bb6a;
   }
 }
 
