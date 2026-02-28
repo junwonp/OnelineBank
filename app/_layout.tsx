@@ -55,7 +55,11 @@ export default function RootLayout() {
           }}
         >
           <SnackbarProvider>
-            <Stack>
+            <Stack
+              screenOptions={{
+                headerBackButtonDisplayMode: 'minimal',
+              }}
+            >
               <Stack.Protected guard={isLoggedIn}>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
