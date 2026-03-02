@@ -3,14 +3,10 @@ import {
   getDocs,
   getFirestore,
   FirebaseFirestoreTypes,
-  limit,
   orderBy,
   query,
-  where,
 } from '@react-native-firebase/firestore';
 import { QueryClient, useQuery, UseQueryResult } from '@tanstack/react-query';
-
-import { useAuthStore } from '@/features/auth/store/useAuthStore';
 
 export const accountKeys = {
   all: ['account'] as const,
