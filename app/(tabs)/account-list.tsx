@@ -32,7 +32,7 @@ const AccountList = () => {
       data={accounts}
       renderItem={({ item }) => <Item item={item} />}
       windowSize={3}
-      contentContainerClassName="border-divider py-safe"
+      contentContainerClassName="border-divider pb-safe"
       className="bg-background flex-1"
     />
   );
