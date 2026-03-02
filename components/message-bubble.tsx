@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 import { Image } from 'expo-image';
 
+import ParseTextWithPatterns from '@/components/parse-text';
 import Text from '@/components/ui/text';
 import { useAuthStore } from '@/features/auth/store/useAuthStore';
 import { Message } from '@/features/messages/api';
@@ -20,9 +21,7 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
       {!isMe ? (
         <View className="h-full">
           <Image
-            source={{
-              uri: message.user.avatar ?? 'https://via.placeholder.com/32',
-            }}
+            source={{ uri: message.user.avatar ?? 'https://via.placeholder.com/32' }}
             style={{ width: 32, height: 32, borderRadius: 8 }}
           />
         </View>
@@ -32,12 +31,12 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
           isMe ? 'bg-primary rounded-br-sm' : 'bg-background-surface-container rounded-tl-sm'
         }`}
       >
-        <Text
-          className={`text-md leading-relaxed ${
-            isMe ? 'text-primary-foreground' : 'text-foreground'
-          }`}
-        >
-          {message.text}
+        <Text>
+          <ParseTextWithPatterns
+            className={`text-md leading-relaxed ${isMe ? 'text-primary-foreground' : 'text-foreground'}`}
+          >
+            {message.text}
+          </ParseTextWithPatterns>
         </Text>
       </View>
     </View>
