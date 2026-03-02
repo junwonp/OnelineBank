@@ -44,14 +44,22 @@ const Profile = () => {
   };
 
   return (
-    <View className="flex-1 items-center justify-center p-5">
+    <View className="bg-background flex-1 items-center justify-center gap-12 p-6">
       <Pressable onPress={handlePhotoChange}>
         <Avatar src={photoUrl ?? null} size={100} />
       </Pressable>
-      <Input label="이름" value={user?.displayName || ''} disabled />
-      <Input label="이메일" value={user?.email || ''} disabled />
-      <Input label="계좌번호" value={profile?.account ?? ''} disabled />
-      <Button label="로그아웃" onPress={handleLogoutButtonPress} variant="default" size="default" />
+      <View className="w-full gap-5">
+        <Input label="이름" value={user?.displayName || ''} disabled />
+        <Input label="이메일" value={user?.email || ''} disabled />
+        <Input label="계좌번호" value={profile?.account ?? ''} disabled />
+      </View>
+      <Button
+        label="로그아웃"
+        onPress={handleLogoutButtonPress}
+        variant="destructive"
+        size="default"
+        className="w-full"
+      />
     </View>
   );
 };
