@@ -6,9 +6,10 @@ interface ChatInputBarProps {
   value: string;
   onChangeText: (text: string) => void;
   onSend: () => void;
+  disabled?: boolean;
 }
 
-const ChatInput = ({ value, onChangeText, onSend }: ChatInputBarProps) => (
+const ChatInput = ({ value, onChangeText, onSend, disabled = false }: ChatInputBarProps) => (
   <View className="border-border bg-background-surface pb-safe-offset-3 flex-row items-end border-t px-4 py-3">
     <TextInput
       className="font-regular bg-background-surface-container text-foreground text-md mr-3 max-h-24 min-h-10 flex-1 rounded-2xl px-4 py-2.5"
@@ -17,14 +18,15 @@ const ChatInput = ({ value, onChangeText, onSend }: ChatInputBarProps) => (
       value={value}
       onChangeText={onChangeText}
       multiline
+      editable={!disabled}
       onSubmitEditing={onSend}
     />
     <TouchableOpacity
       onPress={onSend}
-      disabled={!value.trim()}
+      disabled={disabled || !value.trim()}
       activeOpacity={0.75}
       className={`h-10 w-10 items-center justify-center rounded-full ${
-        value.trim() ? 'bg-primary' : 'bg-secondary'
+        !disabled && value.trim() ? 'bg-primary' : 'bg-secondary'
       }`}
     >
       <IconSymbol name="arrow.up" size={22} color="#fff" />

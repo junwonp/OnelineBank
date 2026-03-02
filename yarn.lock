@@ -4940,6 +4940,11 @@ expo-constants@~55.0.7:
     "@expo/config" "~55.0.8"
     "@expo/env" "~2.1.1"
 
+expo-crypto@~55.0.8:
+  version "55.0.8"
+  resolved "https://registry.yarnpkg.com/expo-crypto/-/expo-crypto-55.0.8.tgz#df29ab41c2aafe76d8919b3a1fae3c5963a582e0"
+  integrity sha512-s4G4l1gRgSv3rS4JeKbybXzobWFUcO/B1F6nffjtoGS4WWU5+DNrmbiMnF9mvW21/ozYKtUu21u3pl2+7cGWnw==
+
 expo-dev-client@~55.0.10:
   version "55.0.10"
   resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-55.0.10.tgz#336d8b7ed9affc35d249eeacc53bada8afc2ff83"
@@ -5039,6 +5044,13 @@ expo-linking@~55.0.7:
   integrity sha512-MiGCedere1vzQTEi2aGrkzd7eh/rPSz4w6F3GMBuAJzYl+/0VhIuyhozpEGrueyDIXWfzaUVOcn3SfxVi+kwQQ==
   dependencies:
     expo-constants "~55.0.7"
+    invariant "^2.2.4"
+
+expo-local-authentication@~55.0.8:
+  version "55.0.8"
+  resolved "https://registry.yarnpkg.com/expo-local-authentication/-/expo-local-authentication-55.0.8.tgz#7718085759862702c8c87640364336906303bc56"
+  integrity sha512-Rv0mv8z8yvTMm+oR7Q0DmpN/FIjdEV5z9NJoZNVI7CyUVV9vFkCALjF95mcCO4VCmuPHDbzKPD50IzM1c5vNQg==
+  dependencies:
     invariant "^2.2.4"
 
 expo-manifests@~55.0.9:

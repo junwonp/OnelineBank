@@ -1,5 +1,6 @@
 import { getAuth } from '@react-native-firebase/auth';
 import {
+  addDoc,
   collection,
   getDocs,
   getFirestore,
@@ -8,7 +9,14 @@ import {
   where,
   or,
 } from '@react-native-firebase/firestore';
-import { QueryClient, useQuery, UseQueryResult } from '@tanstack/react-query';
+import { randomUUID } from 'expo-crypto';
+import {
+  QueryClient,
+  useMutation,
+  useQuery,
+  useQueryClient,
+  UseQueryResult,
+} from '@tanstack/react-query';
 
 export const messagesKeys = {
   all: ['messages'] as const,
@@ -61,3 +69,52 @@ export const prefetchMessages = async (queryClient: QueryClient) =>
     queryKey: messagesKeys.all,
     queryFn: getMessages,
   });
+
+export const addMessage = async (text: string, isBot: boolean): Promise<Message> => {
+  const auth = getAuth();
+  const currentUserId = auth.currentUser?.uid;
+  const userName = auth.currentUser?.displayName ?? '';
+
+  if (!currentUserId) throw new Error('User not authenticated');
+
+  const db = getFirestore();
+
+  const message = {
+    _id: randomUUID(),
+    text,
+    createdAt: Date.now(),
+    user: {
+      _id: isBot ? `bots${currentUserId}` : currentUserId,
+      name: isBot ? 'Bot' : userName,
+      avatar:
+        'https://firebasestorage.googleapis.com/v0/b/react-native-chat-d43a3.appspot.com/o/profile%2FeKaVi4APosTLlKN7EDXdvXUIYAD2%2Fphoto.png?alt=media&token=4925aa6b-6085-4404-9f67-30f564adff03',
+    },
+  };
+  await addDoc(collection(db, 'messages'), message);
+
+  return message;
+};
+
+export const useSendMessage = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({
+      text,
+      isBot,
+    }: {
+      text: string;
+      isBot: boolean;
+    }): Promise<{
+      message: Message;
+    }> => {
+      const message = await addMessage(text, isBot);
+      return { message };
+    },
+    onSuccess: (data) => {
+      queryClient.setQueryData(messagesKeys.all, (oldData: Message[]) => {
+        return [...oldData, data.message];
+      });
+    },
+  });
+};

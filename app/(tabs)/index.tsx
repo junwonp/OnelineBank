@@ -6,20 +6,21 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import ChatInput from '@/components/chat-input';
 import MessageBubble from '@/components/message-bubble';
-import { useAccounts } from '@/features/accounts/api';
 import { useMessages } from '@/features/messages/api';
-import { useProfile } from '@/features/profile/api';
+import { useChat } from '@/features/remittance/hooks/useChat';
 
 const Chat = () => {
   const insets = useSafeAreaInsets();
 
-  const { data: accounts } = useAccounts();
+  const { handleSend, isLoading } = useChat();
   const { data: messages } = useMessages();
-  const { data: profile } = useProfile();
 
   const [inputText, setInputText] = useState('');
 
-  const handleSend = async () => {};
+  const onSend = async () => {
+    await handleSend(inputText);
+    setInputText('');
+  };
 
   return (
     <>
@@ -59,7 +60,12 @@ const Chat = () => {
             </View>
           }
         />
-        <ChatInput value={inputText} onChangeText={setInputText} onSend={handleSend} />
+        <ChatInput
+          value={inputText}
+          onChangeText={setInputText}
+          onSend={onSend}
+          disabled={isLoading}
+        />
       </KeyboardAvoidingView>
     </>
   );
