@@ -70,7 +70,7 @@ const Input = ({
           {label ? (
             <Text
               className={cn(
-                'flex-1 text-sm font-semibold',
+                'flex-1 text-sm font-medium',
                 isFocused ? 'text-foreground' : 'text-[--text-secondary]',
               )}
             >
