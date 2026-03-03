@@ -8,7 +8,7 @@ const AppTabs = () => (
       <NativeTabs.Trigger.Icon sf="bubble.fill" md="chat_bubble" renderingMode="template" />
     </NativeTabs.Trigger>
 
-    <NativeTabs.Trigger name="account-list">
+    <NativeTabs.Trigger name="accounts">
       <NativeTabs.Trigger.Label>주소록</NativeTabs.Trigger.Label>
       <NativeTabs.Trigger.Icon sf="person.3.fill" md="person_3" renderingMode="template" />
     </NativeTabs.Trigger>

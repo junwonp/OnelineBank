@@ -1,6 +1,8 @@
 import React from 'react';
 import { FlatList, TouchableOpacity, View } from 'react-native';
+import { Link, Stack } from 'expo-router';
 
+import { IconSymbol } from '@/components/ui/icon-symbol';
 import Text from '@/components/ui/text';
 import { useAccounts } from '@/features/accounts/api';
 
@@ -27,14 +29,29 @@ const AccountList = () => {
   const { data: accounts } = useAccounts();
 
   return (
-    <FlatList
-      keyExtractor={(item) => item.id}
-      data={accounts}
-      renderItem={({ item }) => <Item item={item} />}
-      windowSize={3}
-      contentContainerClassName="border-divider pb-safe"
-      className="bg-background flex-1"
-    />
+    <>
+      <Stack.Screen
+        options={{
+          headerTitle: '',
+          headerTransparent: true,
+          headerRight: () => (
+            <Link asChild href="/accounts/create">
+              <TouchableOpacity>
+                <IconSymbol name="plus" size={24} color="black" />
+              </TouchableOpacity>
+            </Link>
+          ),
+        }}
+      />
+      <FlatList
+        keyExtractor={(item) => item.id}
+        data={accounts}
+        renderItem={({ item }) => <Item item={item} />}
+        windowSize={3}
+        contentContainerClassName="border-divider pb-safe"
+        className="bg-background flex-1"
+      />
+    </>
   );
 };
 
