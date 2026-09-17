@@ -54,3 +54,4 @@ googleServices/
 !.omo/omo.jsonc
 .claude/*
 !.claude/.mcp.json
+.agents/skills/
