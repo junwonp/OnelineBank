@@ -1,0 +1,6 @@
+{
+  "mcpServers": {
+    "expo": { "url": "https://mcp.expo.dev/mcp" },
+    "firebase": { "command": "npx", "args": ["-y", "firebase-tools@latest", "mcp"] }
+  }
+}

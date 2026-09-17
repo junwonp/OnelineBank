@@ -48,3 +48,9 @@ googleServices/
 *.ipa
 
 .cursor/mcp.json
+
+# Agent config is shared; runtime state is machine-local.
+.omo/*
+!.omo/omo.jsonc
+.claude/*
+!.claude/.mcp.json

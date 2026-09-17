@@ -1,0 +1,14 @@
+// Project-scoped OMO overrides. Language/stack skills this project does not use live
+// here rather than in the global set, so the always-loaded skill index stays small.
+{
+  "[opencode]": {
+    "experimental": {
+      "aggressive_truncation": true,
+      "dynamic_context_pruning": {
+        "enabled": true,
+        "turn_protection": { "enabled": true, "turns": 3 }
+      },
+      "disable_omo_env": true
+    }
+  }
+}
