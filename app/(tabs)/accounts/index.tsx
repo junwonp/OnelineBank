@@ -14,12 +14,12 @@ interface Account {
   uid: string;
 }
 
-const Item = React.memo(({ item: { name, bank, account } }: { item: Account }) => {
+const Item = React.memo(function Item({ item: { name, bank, account } }: { item: Account }) {
   return (
     <TouchableOpacity className="border-divider flex-row items-center border-b px-5 py-[15px]">
       <View className="flex-1 flex-col">
         <Text className="text-xl font-semibold">{name}</Text>
-        <Text className="mt-[5px] text-base text-[--text-secondary]">{`${bank} ${account}`}</Text>
+        <Text className="mt-[5px] text-base text-(--text-secondary)">{`${bank} ${account}`}</Text>
       </View>
     </TouchableOpacity>
   );

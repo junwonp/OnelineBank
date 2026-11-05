@@ -1,4 +1,12 @@
-import { ReactNode, Ref, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  type ComponentRef,
+  ReactNode,
+  Ref,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { ColorValue, Pressable, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import Animated, {
   type AnimatedStyle,
@@ -26,7 +34,7 @@ interface SnackbarProps extends Omit<ViewProps, 'style'> {
   maxFontSizeMultiplier?: number;
   onDismiss: () => void;
   onIconPress?: () => void;
-  ref?: Ref<View>;
+  ref?: Ref<ComponentRef<typeof Pressable>>;
   rippleColor?: ColorValue;
   visible: boolean;
   wrapperStyle?: StyleProp<ViewStyle>;

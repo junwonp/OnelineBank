@@ -6,14 +6,10 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useUnstableNativeVariable as _useUnstableNativeVariable } from 'nativewind';
 
 import Text from '@/components/ui/text';
+import useThemeColor from '@/hooks/use-theme-color';
 import { cn } from '@/utils/style';
-
-const useUnstableNativeVariable = _useUnstableNativeVariable as (
-  name: string,
-) => string | undefined;
 
 interface InputProps extends TextInputProps {
   label?: string;
@@ -22,7 +18,7 @@ interface InputProps extends TextInputProps {
   disabled?: boolean;
   limit?: number;
   containerStyle?: StyleProp<ViewStyle>;
-  ref?: Ref<TextInput>;
+  ref?: Ref<React.ComponentRef<typeof TextInput>>;
 }
 
 const Input = ({
@@ -39,10 +35,10 @@ const Input = ({
   ref,
   ...rest
 }: InputProps) => {
-  const placeholderColor = useUnstableNativeVariable('--text-placeholder');
-  const cursorColor = useUnstableNativeVariable('--foreground');
-  const surfaceContainerColor = useUnstableNativeVariable('--background-surface-container');
-  const primaryContainerColor = useUnstableNativeVariable('--primary-container');
+  const placeholderColor = useThemeColor('--text-placeholder');
+  const cursorColor = useThemeColor('--foreground');
+  const surfaceContainerColor = useThemeColor('--background-surface-container');
+  const primaryContainerColor = useThemeColor('--primary-container');
 
   const [isFocused, setIsFocused] = useState(false);
 
@@ -71,7 +67,7 @@ const Input = ({
             <Text
               className={cn(
                 'flex-1 text-sm font-medium',
-                isFocused ? 'text-foreground' : 'text-[--text-secondary]',
+                isFocused ? 'text-foreground' : 'text-(--text-secondary)',
               )}
             >
               {label + (isNecessary ? ' *' : '')}
@@ -83,7 +79,7 @@ const Input = ({
             <Text
               className={cn(
                 'text-right text-sm',
-                isOverLimit ? 'text-destructive' : 'text-[--text-secondary]',
+                isOverLimit ? 'text-destructive' : 'text-(--text-secondary)',
               )}
             >
               {`${charCount} / ${limit}`}

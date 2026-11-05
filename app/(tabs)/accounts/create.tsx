@@ -1,7 +1,6 @@
-import { useRef } from 'react';
+import { type ComponentRef, useRef } from 'react';
 import { TextInput, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
-import { useUnstableNativeVariable } from 'nativewind';
 import { z } from 'zod';
 import { useForm } from '@tanstack/react-form';
 
@@ -10,6 +9,7 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import { useCreateAccount } from '@/features/accounts/api';
 import { useAuthStore } from '@/features/auth/store/useAuthStore';
+import useThemeColor from '@/hooks/use-theme-color';
 import { removeWhitespace } from '@/utils/string';
 import { validateAccount, validateBankCode } from '@/utils/validation';
 
@@ -32,10 +32,10 @@ const CreateAccount = () => {
   const { user } = useAuthStore();
   const { mutateAsync: createAccount, isPending } = useCreateAccount();
 
-  const backgroundColor = useUnstableNativeVariable('--background');
+  const backgroundColor = useThemeColor('--background');
 
-  const bankRef = useRef<TextInput>(null);
-  const accountRef = useRef<TextInput>(null);
+  const bankRef = useRef<ComponentRef<typeof TextInput>>(null);
+  const accountRef = useRef<ComponentRef<typeof TextInput>>(null);
 
   const form = useForm({
     defaultValues: {

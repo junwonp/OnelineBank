@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { type ComponentRef, useRef } from 'react';
 import { TextInput, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { z } from 'zod';
@@ -28,8 +28,8 @@ const SignUp = () => {
   const router = useRouter();
   const { setSnackbarMessage } = useSnackbar();
 
-  const passwordRef = useRef<TextInput>(null);
-  const passwordConfirmRef = useRef<TextInput>(null);
+  const passwordRef = useRef<ComponentRef<typeof TextInput>>(null);
+  const passwordConfirmRef = useRef<ComponentRef<typeof TextInput>>(null);
 
   const form = useForm({
     defaultValues: {

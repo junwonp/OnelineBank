@@ -60,7 +60,7 @@ interface ButtonProps extends TouchableOpacityProps, VariantProps<typeof buttonV
   label?: string;
   isLoading?: boolean;
   icon?: React.ReactNode;
-  ref?: React.Ref<View>;
+  ref?: React.Ref<React.ComponentRef<typeof TouchableOpacity>>;
 }
 
 const Button = ({

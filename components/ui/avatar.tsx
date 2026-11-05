@@ -4,7 +4,6 @@ import { Image, ImageProps } from 'expo-image';
 import { IconSymbol, IconSymbolName } from '@/components/ui/icon-symbol';
 import Text from '@/components/ui/text';
 import useRetryImage from '@/hooks/use-retry-image';
-import { cn } from '@/utils/style';
 
 interface AvatarProps extends Pick<
   ImageProps,
@@ -43,7 +42,7 @@ const Avatar = ({
   });
 
   return (
-    <View className={cn('flex-center rounded-full', style)} {...rest}>
+    <View className="flex-center rounded-full" style={style} {...rest}>
       {src ? (
         <Image
           accessibilityLabel="Avatar"

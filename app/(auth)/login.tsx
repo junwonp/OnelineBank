@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { type ComponentRef, useRef } from 'react';
 import { TextInput, View } from 'react-native';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
@@ -25,7 +25,7 @@ const Login = () => {
   const router = useRouter();
   const { setSnackbarMessage } = useSnackbar();
 
-  const passwordRef = useRef<TextInput>(null);
+  const passwordRef = useRef<ComponentRef<typeof TextInput>>(null);
 
   const form = useForm({
     defaultValues: {
