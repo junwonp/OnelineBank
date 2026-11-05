@@ -1,15 +1,14 @@
+import { randomUUID } from 'expo-crypto';
 import { getAuth } from '@react-native-firebase/auth';
 import {
   addDoc,
   collection,
   getDocs,
   getFirestore,
-  FirebaseFirestoreTypes,
+  or,
   query,
   where,
-  or,
 } from '@react-native-firebase/firestore';
-import { randomUUID } from 'expo-crypto';
 import {
   QueryClient,
   useMutation,
@@ -17,6 +16,7 @@ import {
   useQueryClient,
   UseQueryResult,
 } from '@tanstack/react-query';
+import type { QueryDocumentSnapshot } from '@react-native-firebase/firestore';
 
 export const messagesKeys = {
   all: ['messages'] as const,
@@ -50,10 +50,7 @@ const getMessages = async () => {
   if (snapshot.empty) return null;
   console.log(snapshot.docs);
   return snapshot.docs
-    .map(
-      (doc: FirebaseFirestoreTypes.QueryDocumentSnapshot) =>
-        ({ _id: doc.id, ...doc.data() }) as Message,
-    )
+    .map((doc: QueryDocumentSnapshot) => ({ _id: doc.id, ...doc.data() }) as Message)
     .sort((a: Message, b: Message) => b.createdAt - a.createdAt);
 };
 

@@ -66,13 +66,13 @@ const expoConfig: ExpoConfig = {
       'expo-build-properties',
       {
         android: {
+          kotlinVersion: '2.4.0',
           enableMinifyInReleaseBuilds: true,
           enableShrinkResourcesInReleaseBuilds: true,
         },
         ios: {
           ccacheEnabled: true,
-          forceStaticLinking: ['RNFBApp', 'RNFBAuth'],
-          useFrameworks: 'static',
+          useFrameworks: 'dynamic',
         },
       },
     ],

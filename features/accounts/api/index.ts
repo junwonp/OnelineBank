@@ -4,7 +4,6 @@ import {
   collection,
   getDocs,
   getFirestore,
-  FirebaseFirestoreTypes,
   orderBy,
   query,
   where,
@@ -16,6 +15,7 @@ import {
   useQueryClient,
   UseQueryResult,
 } from '@tanstack/react-query';
+import type { QueryDocumentSnapshot } from '@react-native-firebase/firestore';
 
 export const accountKeys = {
   all: ['account'] as const,
@@ -42,8 +42,7 @@ const getAccounts = async () => {
   if (snapshot.empty) return null;
 
   return snapshot.docs.map(
-    (doc: FirebaseFirestoreTypes.QueryDocumentSnapshot) =>
-      ({ id: doc.id, ...doc.data() }) as Account,
+    (doc: QueryDocumentSnapshot) => ({ id: doc.id, ...doc.data() }) as Account,
   );
 };
 

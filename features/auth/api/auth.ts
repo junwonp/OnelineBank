@@ -1,19 +1,19 @@
 import {
   createUserWithEmailAndPassword,
-  FirebaseAuthTypes,
   getAuth,
   signInWithEmailAndPassword,
 } from '@react-native-firebase/auth';
+import type { NativeFirebaseAuthError, User } from '@react-native-firebase/auth';
 
 interface SignUpResult {
   success: boolean;
-  user?: FirebaseAuthTypes.User;
+  user?: User;
   error?: string;
 }
 
 interface SignInResult {
   success: boolean;
-  user?: FirebaseAuthTypes.User;
+  user?: User;
   error?: string;
 }
 
@@ -25,7 +25,7 @@ export const signUpWithEmail = async (email: string, password: string): Promise<
 
     return { success: true, user: userCredential.user };
   } catch (err) {
-    const error = err as FirebaseAuthTypes.NativeFirebaseAuthError;
+    const error = err as NativeFirebaseAuthError;
     let errorMessage = '회원가입에 실패했습니다.';
 
     switch (error.code) {
@@ -54,7 +54,7 @@ export const signInWithEmail = async (email: string, password: string): Promise<
 
     return { success: true, user: userCredential.user };
   } catch (err) {
-    const error = err as FirebaseAuthTypes.NativeFirebaseAuthError;
+    const error = err as NativeFirebaseAuthError;
     let errorMessage = '로그인에 실패했습니다.';
 
     switch (error.code) {
