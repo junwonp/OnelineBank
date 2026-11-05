@@ -1,0 +1,23 @@
+nodeLinker: hoisted
+
+# Corepack enforces the pinned pnpm version. Skip pnpm's own version check so
+# the lockfile stays single-document and remains readable by EAS images.
+pmOnFail: ignore
+
+overrides:
+  lightningcss: 1.30.1
+
+allowBuilds:
+  # Web SDK config injection is not used by native Firebase.
+  '@firebase/util': false
+  # Validate and prepare the platform binary used by Metro minification.
+  esbuild: true
+  # Only emits version-scheme compatibility warnings; no generated runtime files.
+  protobufjs: false
+  # Validate and prepare the native resolver binding used by ESLint.
+  unrs-resolver: true
+
+# Explicit latest-ESLint target: published 2026-10-30, inside pnpm's age window.
+# This version-scoped exception does not disable peer or Expo version checks.
+minimumReleaseAgeExclude:
+  - eslint@10.14.0

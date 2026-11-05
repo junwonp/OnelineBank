@@ -2,10 +2,10 @@
 
 ## Stack
 
-- Expo ~55 · React Native 0.83 · React 19.2 · TypeScript ~5.9; yarn (`yarn.lock`)
-- Expo Router ~55 (file-based); NativeWind 5 preview on Tailwind 4 (`global.css`); typed routes + React Compiler on
+- Expo ~58 · React Native 0.88 · React 19.3 · TypeScript ~6.0; pnpm 12.16.1 (`pnpm-lock.yaml`)
+- Expo Router ~58 (file-based); NativeWind 5 RC on Tailwind 4 (`global.css`); typed routes + React Compiler on
 - TanStack Query v5 (+persist), TanStack Form v1, Zustand v5, Zod v4
-- Firebase v23: `@react-native-firebase/{app,auth,crashlytics,firestore}`; MMKV; Reanimated 4 + worklets
+- Firebase v27: `@react-native-firebase/{app,auth,crashlytics,firestore}`; MMKV; Reanimated 4 + worklets
 
 ## Layout
 
@@ -15,7 +15,7 @@
 
 ## Commands
 
-`yarn <script>`: `start`, `ios`, `android`, `web`, `lint`, `doctor`, `prebuild`, `pod-install`
+`pnpm run <script>`: `start`, `ios`, `android`, `web`, `lint`, `doctor`, `prebuild`, `pod-install`
 
 ## Conventions
 

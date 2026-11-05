@@ -22,36 +22,45 @@
 
 | 분류 | 기술 |
 |---|---|
-| 프레임워크 | React Native 0.83 + Expo 55 |
-| 언어 | TypeScript 5.9 |
+| 프레임워크 | React Native 0.88 + Expo 58 |
+| 언어 | TypeScript 6.0 |
 | 라우팅 | Expo Router (파일 기반) |
 | 서버 상태 관리 | TanStack Query v5 |
 | 폼 관리 | TanStack Form v1 |
 | 클라이언트 상태 관리 | Zustand v5 |
-| 스타일링 | NativeWind v5 (Tailwind CSS) |
+| 스타일링 | NativeWind v5 RC (Tailwind CSS) |
 | 스키마 검증 | Zod v4 |
 | 로컬 스토리지 | MMKV |
 | 쿼리 퍼시스트 | TanStack Query Async Storage Persister |
-| 백엔드 | Firebase (Auth, Firestore, Crashlytics) |
+| 백엔드 | Firebase v27 (Auth, Firestore, Crashlytics) |
 | 애니메이션 | React Native Reanimated 4 |
 
 ## 시작하기
 
 ### 의존성 설치
 
+`package.json`의 `packageManager`에 `pnpm@12.16.1`이 고정되어 있습니다. Corepack이 활성화된 환경에서는 `pnpm install` 시 고정된 버전을 자동으로 사용합니다.
+
 ```bash
-yarn install
+pnpm install
+```
+
+락파일과 동기화된 재현 가능한 설치(CI 등)는 `--frozen-lockfile`을 사용합니다.
+
+```bash
+pnpm install --frozen-lockfile
 ```
 
 ### 앱 실행
 
 ```bash
-yarn start
+pnpm start
 ```
 
 iOS 시뮬레이터, Android 에뮬레이터, 또는 실기기에서 실행할 수 있습니다.
 
 ```bash
-yarn ios
-yarn android
+pnpm ios
+pnpm android
 ```
+

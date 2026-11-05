@@ -1,7 +1,3 @@
-echo "Running preinstall script for configuring yarn.lock"
-
-bash -c '[ -n "$EAS_BUILD_NPM_CACHE_URL" ] && sed -i.bak -e "s#https://registry.yarnpkg.com#$EAS_BUILD_NPM_CACHE_URL#g" yarn.lock && rm -f yarn.lock.bak' || true
-
 echo "Running preinstall script for configuring google-services.json and GoogleService-Info.plist"
 
 # Create the directory if it doesn't exist
