@@ -53,10 +53,10 @@ const Login = () => {
     <View className="bg-background py-safe flex-1 px-5">
       <View className="w-full flex-1 items-center justify-center gap-5">
         <Image
-          source={
-            'https://firebasestorage.googleapis.com/v0/b/react-native-chat-d43a3.appspot.com/o/logo.png?alt=media'
-          }
-          style={{ width: 100, height: 100, borderRadius: 20 }}
+          accessibilityLabel="한줄은행 로고"
+          contentFit="contain"
+          source={require('../../assets/images/icon.png')}
+          style={{ width: 100, height: 100, borderRadius: 24 }}
         />
         <View className="gap-5">
           <form.Field name="email">
